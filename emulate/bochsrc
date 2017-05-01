@@ -18,6 +18,7 @@ info: action=report
 debug: action=ignore
 
 com1: enabled=1, mode=file, dev=serial.out
+mouse: type=imps2
 
 debugger_log: debugger.out
 magic_break: enabled=1
