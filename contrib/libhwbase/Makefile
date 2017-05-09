@@ -5,6 +5,7 @@ SRC = https://review.coreboot.org/libhwbase.git
 PATCHES = \
 	0001-mutime-Make-Sinfo-an-imported-constant.patch \
 	0002-static_mmio-Disable-SPARK-for-Set_Base_Address-body.patch \
-	0003-time-Add-T_First-constant.patch
+	0003-time-Add-T_First-constant.patch \
+	0001-Implement-legacy-VGA-debug-sink.patch
 
 include ../contrib.git.mk

@@ -1,4 +1,7 @@
 <subject name="dbgserver">
+	<devices>
+		<device logical="vga" physical="vga"/>
+	</devices>
 	<events/>
 	<component ref="dbgserver">
 		<map logical="log_channel1" physical="debuglog_subject1"/>
