@@ -17,12 +17,12 @@
 --
 
 with SK.Console;
-with SK.Console_Serial;
+with SK.Legacy_VGA;
 
 pragma Elaborate (SK.Console);
 
 --  Kernel debug console.
 package SK.KC is new SK.Console
-  (Initialize      => Console_Serial.Init,
-   Output_New_Line => Console_Serial.New_Line,
-   Output_Char     => Console_Serial.Put_Char);
+  (Initialize      => SK.Legacy_VGA.VGA.Init,
+   Output_New_Line => SK.Legacy_VGA.VGA.New_Line,
+   Output_Char     => SK.Legacy_VGA.VGA.Put_Char);

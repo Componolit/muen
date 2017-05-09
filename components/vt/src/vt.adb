@@ -28,6 +28,7 @@ with Mux.Terminals;
 procedure VT
 is
 begin
+   SK.CPU.Stop;
    SK.Interrupt_Tables.Initialize
      (Stack_Addr => Component_Constants.Interrupt_Stack_Address);
    Mux.Terminals.Initialize;

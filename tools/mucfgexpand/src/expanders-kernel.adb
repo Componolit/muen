@@ -349,6 +349,13 @@ is
          Add_Device_Mappings (Devices_Node => Devices,
                               Device_Type  => "I/O APIC",
                               Cap_Name     => "ioapic");
+         Muxml.Utils.Append_Child
+           (Node      => Devices,
+            New_Child => Create_Device_Reference
+              (Device_Logical  => "vga",
+               Device_Physical => "vga",
+               MMIO_Name       => "buffer",
+               MMIO_Addr       => "16#000a_0000#"));
       end Add_IO_APIC;
 
       ----------------------------------------------------------------------
