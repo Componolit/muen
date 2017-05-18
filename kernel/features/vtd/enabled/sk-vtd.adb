@@ -209,7 +209,7 @@ is
                       (Msg  => "IOMMU FR offset mismatch",
                        Item => SK.Word16 (Caps.FRO) * 16));
 
-      Matching_NFR := Caps.NFR = 0 ;
+      Matching_NFR := Caps.NFR = 0;
       pragma Debug (not Matching_NFR,
                     SK.Dump.Print_Message_8
                       (Msg  => "Unsupported IOMMU NFR",
