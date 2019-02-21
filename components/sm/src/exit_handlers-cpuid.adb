@@ -75,8 +75,12 @@ is
             --  Bit 20 - SSE4.2
             --  Bit 22 - POPCNT Instruction
             --  Bit 25 - AESNI
+            --  Bit 26 - XSAVE
+            --  Bit 27 - OSXSAVE
+            --  Bit 28 - AVX
+            --  Bit 29 - F16C
             --  Bit 30 - RDRAND
-            State.Regs.RCX := 16#4298_2203#;
+            State.Regs.RCX := 16#7e98_2203#;
 
             --  Bit  0 -   FPU: x87 enabled
             --  Bit  3 -   PSE: Page Size Extensions
