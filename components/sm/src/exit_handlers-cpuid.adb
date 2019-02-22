@@ -51,7 +51,7 @@ is
             --  Return the vendor ID for a GenuineIntel processor and set
             --  the highest valid CPUID number to 7.
 
-            State.Regs.RAX := 7;
+            State.Regs.RAX := 16#d#;
             State.Regs.RBX := 16#756e_6547#;
             State.Regs.RCX := 16#6c65_746e#;
             State.Regs.RDX := 16#4965_6e69#;
@@ -128,6 +128,89 @@ is
 
             State.Regs.RCX := 0;
             State.Regs.RDX := 0;
+         when 16#d# =>
+            State.Regs.RAX := 0;
+            State.Regs.RBX := 0;
+            State.Regs.RCX := 0;
+            State.Regs.RDX := 0;
+
+            if RCX = 0 then
+               State.Regs.RAX := 16#001f#;
+               State.Regs.RBX := 16#0340#;
+               State.Regs.RCX := 16#0340#;
+               State.Regs.RDX := 0;
+            elsif RCX = 1 then
+               State.Regs.RAX := 16#0007#;
+               State.Regs.RBX := 15#03c0#;
+               State.Regs.RCX := 16#0100#;
+               State.Regs.RDX := 0;
+            elsif RCX = 2 then
+
+               --  AVX/YMM
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 16#0100#;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 16#0240#;
+            elsif RCX = 3 then
+
+               --  MPX BNDREGS
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 16#0040#;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 16#03c0#;
+            elsif RCX = 4 then
+
+               --  MPX BNDCSR
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 16#0040#;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 16#0400#;
+            elsif RCX = 5 then
+
+               --  AVX-512 opmask
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 0;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 0;
+            elsif RCX = 6 then
+
+               --  AVX-512 ZMM Hi256
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 0;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 0;
+            elsif RCX = 7 then
+
+               --  AVX-512 Hi16 ZMM
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 0;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 0;
+            elsif RCX = 8 then
+
+               --  PT
+
+               --  Size of save area in bytes
+               State.Regs.RAX := 16#0080#;
+
+               --  Offset from beginning of XSAVE/XRSTOR area in bytes
+               State.Regs.RBX := 0;
+
+               --  Supported in IA32_XSS
+               State.Regs.RCX := 0;
+            end if;
          when 16#8000_0000# =>
 
             --  Get Highest Extended Function Supported.
