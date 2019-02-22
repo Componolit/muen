@@ -72,7 +72,7 @@ is
 
    --  Size of XSAVE area in bytes, see Intel SDM Vol. 1 (December 2015
    --  edition), section 13.5.
-   XSAVE_Area_Size : constant := (512 + 64) + 512;
+   XSAVE_Area_Size : constant := Page_Size;
 
    type XSAVE_Area_Range is range 0 .. XSAVE_Area_Size - 1;
 
