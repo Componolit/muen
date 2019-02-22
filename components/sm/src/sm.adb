@@ -16,6 +16,8 @@
 --  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 --
 
+with Interfaces;
+
 with X86_64;
 
 with SK.CPU;
@@ -23,6 +25,7 @@ with SK.Bitops;
 with SK.Hypercall;
 with SK.Constants;
 with SK.Interrupt_Tables;
+with SK.Strings;
 
 with Debuglog.Client;
 
@@ -71,7 +74,8 @@ is
    Action       : Types.Subject_Action_Type := Types.Subject_Continue;
 
    Exit_Reason, Instruction_Len : SK.Word32;
-   RIP : SK.Word64;
+   RIP                          : SK.Word64;
+   XCR0_Shadow : SK.Word64;
 begin
    pragma Debug (Debug_Ops.Put_Line (Item => "SM subject running"));
    SK.Interrupt_Tables.Initialize
@@ -89,13 +93,27 @@ begin
       elsif Exit_Reason = SK.Constants.EXIT_REASON_INVLPG
         or else Exit_Reason = SK.Constants.EXIT_REASON_DR_ACCESS
         or else Exit_Reason = SK.Constants.EXIT_REASON_WBINVD
-        or else Exit_Reason = SK.Constants.EXIT_REASON_XSETBV
       then
 
          --  Ignore WBINVD, INVLPG and MOV DR for now.
 
          Action := Types.Subject_Continue;
-
+      elsif Exit_Reason = SK.Constants.EXIT_REASON_XSETBV then
+         declare
+            Dummy_RAX : constant SK.Word64 := State.Regs.RAX;
+            Dummy_RCX : constant SK.Word64 := State.Regs.RCX;
+            Dummy_RDX : constant SK.Word64 := State.Regs.RDX;
+         begin
+            XCR0_Shadow := Interfaces.Shift_Left
+              (Value  => (Dummy_RDX and 2 ** 32 - 1),
+               Amount => 32);
+            XCR0_Shadow := XCR0_Shadow or (Dummy_RAX and 2 ** 32 - 1);
+            pragma Debug (Debug_Ops.Put_Line
+                          (Item => "XSETBV: " & SK.Strings.Img (Dummy_RCX)
+                           & " - " & SK.Strings.Img (XCR0_Shadow) & "->"
+                           & SK.Strings.Img (Dummy_RDX)
+                           & ":" & SK.Strings.Img (Dummy_RAX)));
+         end;
       elsif Exit_Reason = SK.Constants.EXIT_REASON_RDTSC then
          Exit_Handlers.RDTSC.Process (Action => Action);
       elsif Exit_Reason = SK.Constants.EXIT_REASON_IO_INSTRUCTION then
