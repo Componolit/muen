@@ -70,9 +70,10 @@ is
    --  Size of one page (4k).
    Page_Size : constant := 4096;
 
-   --  Size of XSAVE area in bytes, see Intel SDM Vol. 1 (December 2015
-   --  edition), section 13.5.
-   XSAVE_Area_Size : constant := (512 + 64) + 512;
+   --  For actual size of XSAVE area in bytes, see Intel SDM Vol. 1 (December
+   --  2015 edition), section 13.5. Since we are dedicated one 4K page for each
+   --  subject FPU state, allow storing as much FPU state.
+   XSAVE_Area_Size : constant := Page_Size;
 
    type XSAVE_Area_Range is range 0 .. XSAVE_Area_Size - 1;
 
