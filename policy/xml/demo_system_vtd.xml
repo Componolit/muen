@@ -42,6 +42,13 @@
 		<include href="subject_dbgserver.xml"/>
 		<include href="subject_ps2.xml"/>
 
+                <subject name="hello_world">
+                    <events/>
+                    <component ref="hello_world">
+                        <map logical="debuglog" physical="debuglog_subject9"/>
+                    </component>
+                </subject>
+
 		<if variable="pciconf_emulation_enabled" value="true">
 			<include href="subject_nic_dm.xml"/>
 			<include href="subject_storage_dm.xml"/>

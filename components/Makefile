@@ -17,7 +17,8 @@ COMPONENTS_BUILD := \
 	sl \
 	sm \
 	time \
-	vt
+	vt \
+	hello_world
 
 # components to proof
 COMPONENTS_PROOF := \

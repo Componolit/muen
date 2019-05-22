@@ -1,0 +1,5 @@
+<component name="hello_world" profile="native">
+    <depends>
+        <library ref="libdebuglog"/>
+    </depends>
+</component>
