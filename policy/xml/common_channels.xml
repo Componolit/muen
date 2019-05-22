@@ -14,6 +14,7 @@
 	<channel name="debuglog_subject4" size="$logchannel_size"/>
 	<channel name="debuglog_subject5" size="$logchannel_size"/>
 	<channel name="debuglog_subject6" size="$logchannel_size"/>
+	<channel name="debuglog_subject9" size="$logchannel_size"/>
 
 	<if variable="pciconf_emulation_enabled" value="true">
 		<channel name="debuglog_subject7" size="$logchannel_size"/>
