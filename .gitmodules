@@ -8,3 +8,7 @@
 	path = components/libxhcidbg
 	url = ../libxhcidbg.git
 	branch = muen
+[submodule "components/spark_runtime/src"]
+	path = components/spark_runtime/src
+        url = https://github.com/Componolit/ada-runtime.git
+        branch = muen
