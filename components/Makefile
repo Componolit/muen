@@ -31,7 +31,8 @@ COMPONENTS_PROOF := \
 # all components inkl. Linux, overridable by user
 COMPONENTS ?= \
 	$(COMPONENTS_BUILD) \
-	linux
+	linux \
+	spark_runtime
 
 COMPS_BUILD := $(filter $(COMPONENTS_BUILD),$(COMPONENTS))
 COMPS_PROOF := $(filter $(COMPONENTS_PROOF),$(COMPONENTS))
