@@ -1839,7 +1839,7 @@ is
         (Policy      => Data,
          Name        => "tau0|bin",
          Address     => "",
-         Size        => "16#0001_4000#",
+         Size        => "16#001d_4000#",
          Caching     => "WB",
          Alignment   => "16#1000#",
          Memory_Type => "subject_binary",
