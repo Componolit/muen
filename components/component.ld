@@ -47,6 +47,10 @@ SECTIONS
 
 	. = ALIGN (4096);
 
+        .gcc_except_table : { *(.gcc_except_table) }
+
+        . = ALIGN (4096);
+
 	/DISCARD/ :
 	{
 		*(.comment)
