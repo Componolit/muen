@@ -46,12 +46,12 @@ SECTIONS
 		*(.bss)
 	}
 
-	.globaldata 0x00119000 :
+	.globaldata 0x0021c000 :
 	{
 		*(.globaldata)
 	}
 
-	.rodata 0x0011f000 :
+	.rodata 0x0021d000 :
 	{
 		*(.rodata)
 	}

@@ -35,7 +35,10 @@ SECTIONS
 
 	. = ALIGN (4096);
 
-	.bss : { *(.bss) }
+	.bss 0xd0000:
+	{
+		*(.bss)
+	}
 
 	. = ALIGN (4096);
 
@@ -47,9 +50,9 @@ SECTIONS
 
 	. = ALIGN (4096);
 
-        .gcc_except_table : { *(.gcc_except_table) }
+	.gcc_except_table : { *(.gcc_except_table) }
 
-        . = ALIGN (4096);
+	. = ALIGN (4096);
 
 	/DISCARD/ :
 	{
