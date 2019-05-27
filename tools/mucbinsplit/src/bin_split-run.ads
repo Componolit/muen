@@ -96,7 +96,18 @@ is
           Fill_Pattern  => 16#00#,
           Writable      => True,
           Executable    => False,
-          Optional      => False));
+          Optional      => False),
+         (Name          =>
+            Ada.Strings.Unbounded.To_Unbounded_String (".gcc_except_table"),
+          Write_To_File => True,
+          Flags         =>
+            Bfd.Constants.SEC_HAS_CONTENTS or Bfd.Constants.SEC_READONLY
+            or Bfd.Constants.SEC_ALLOC or Bfd.Constants.SEC_LOAD
+            or Bfd.Constants.SEC_DATA,
+          Fill_Pattern  => 16#00#,
+          Writable      => False,
+          Executable    => False,
+          Optional      => True));
 
 private
 
