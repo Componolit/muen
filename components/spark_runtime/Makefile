@@ -35,7 +35,23 @@ SRC = a-except.adb \
       x86_64.adb \
       memcmp.S \
       memcpy.S \
-      memset.S
+      memset.S \
+      debuglog.ads \
+      debuglog-client.adb \
+      debuglog-sink.adb \
+      debuglog-stream.ads \
+      debuglog-stream-writer_instance.ads \
+      debuglog-types.ads \
+      debuglog-constants.ads \
+      libdebuglog_component.adb \
+      libdebuglog_component-channels.ads \
+      muchannel_constants.ads \
+      muchannel.adb \
+      muchannel-writer.adb \
+      musinfo.ads \
+      musinfo-instance.adb \
+      musinfo-utils.adb \
+      muschedinfo.ads
 
 SRC := $(sort $(SRC) $(patsubst %.adb, %.ads, $(filter %.adb, $(SRC))))
 
@@ -68,6 +84,24 @@ $(OBJ_DIR)/adainclude/%: $(TOP_DIR)/common/src/%
 	cp -a $< $@
 
 $(OBJ_DIR)/adainclude/%: $(TOP_DIR)/rts/src/asm/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%: $(TOP_DIR)/components/libdebuglog/src/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%: $(TOP_DIR)/components/libdebuglog/generated/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%: $(TOP_DIR)/components/libmuchannel/src/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%: $(TOP_DIR)/common/musinfo/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%: $(TOP_DIR)/components/libmusinfo/src/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%: $(TOP_DIR)/common/muschedinfo/%
 	cp -a $< $@
 
 check:
