@@ -36,22 +36,22 @@ SECTIONS
 		trampoline_end = .;
 	}
 
-	.data 0x00110000 : AT (0x00110000)
+	.data 0x00120000 : AT (0x00120000)
 	{
 		*(.data)
 	}
 
-	.bss 0x00112000 :
+	.bss 0x00122000 :
 	{
 		*(.bss)
 	}
 
-	.globaldata 0x0021c000 :
+	.globaldata 0x0022c000 :
 	{
 		*(.globaldata)
 	}
 
-	.rodata 0x0021d000 :
+	.rodata 0x0022d000 :
 	{
 		*(.rodata)
 	}

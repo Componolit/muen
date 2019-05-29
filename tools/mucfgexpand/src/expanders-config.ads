@@ -20,18 +20,18 @@ package Expanders.Config
 is
 
    Kernel_Text_Section_Addr         : constant := 16#0010_0000#;
-   Kernel_Text_Section_Size         : constant := 16#0001_0000#;
-   Kernel_Data_Section_Addr         : constant := 16#0011_0000#;
+   Kernel_Text_Section_Size         : constant := 16#0002_0000#;
+   Kernel_Data_Section_Addr         : constant := 16#0012_0000#;
    Kernel_Data_Section_Size         : constant := 16#0000_2000#;
-   Kernel_BSS_Section_Addr          : constant := 16#0011_2000#;
+   Kernel_BSS_Section_Addr          : constant := 16#0012_2000#;
    Kernel_BSS_Section_Size          : constant := 16#0010_5000#;
-   Kernel_Stack_Addr                : constant := 16#0021_8000#;
+   Kernel_Stack_Addr                : constant := 16#0022_8000#;
    Kernel_Stack_Size                : constant := 16#0000_1000#;
-   Kernel_Interrupt_Stack_Addr      : constant := 16#0021_a000#;
+   Kernel_Interrupt_Stack_Addr      : constant := 16#0022_a000#;
    Kernel_Interrupt_Stack_Size      : constant := 16#0000_1000#;
-   Kernel_Global_Data_Section_Addr  : constant := 16#0021_c000#;
+   Kernel_Global_Data_Section_Addr  : constant := 16#0022_c000#;
    Kernel_Global_Data_Section_Size  : constant := 16#0000_1000#;
-   Kernel_RO_Section_Addr           : constant := 16#0021_d000#;
+   Kernel_RO_Section_Addr           : constant := 16#0022_d000#;
    Kernel_RO_Section_Size           : constant := 16#0002_1000#;
    Tau0_Interface_Virtual_Addr      : constant := 16#0041_c000#;
    Crash_Audit_Virtual_Addr         : constant := 16#0030_0000#;
