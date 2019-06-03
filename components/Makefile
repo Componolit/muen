@@ -18,7 +18,8 @@ COMPONENTS_BUILD := \
 	sm \
 	time \
 	vt \
-	hello_world
+	hello_world \
+	sdump
 
 # components to proof
 COMPONENTS_PROOF := \

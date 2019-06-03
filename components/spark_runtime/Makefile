@@ -9,12 +9,13 @@ SRC = a-except.adb \
       i-c.adb \
       i-cexten.ads \
       interfac.ads \
-      runtime_lib.ads \
-      runtime_lib-secondary_stack.adb \
-      runtime_lib-strings.adb \
-      runtime_lib-debug.adb \
-      runtime_lib-platform.adb \
-      runtime_lib-exceptions.ads \
+      componolit.ads \
+      componolit-runtime.ads \
+      componolit-runtime-secondary_stack.adb \
+      componolit-runtime-strings.adb \
+      componolit-runtime-debug.adb \
+      componolit-runtime-platform.adb \
+      componolit-runtime-exceptions.ads \
       s-exctab.adb \
       s-init.adb \
       s-parame.adb \
@@ -29,7 +30,9 @@ SRC = a-except.adb \
       argv.c \
       exit.c \
       init.c \
-      muen.adb \
+      componolit_runtime.adb \
+      componolit_runtime-c.adb \
+      gnat_helpers.ads \
       sk.ads \
       sk-cpu.adb \
       x86_64.adb \
@@ -77,8 +80,11 @@ $(OBJ_DIR)/adainclude/%: src/contrib/gcc-8.3.0/%
 $(OBJ_DIR)/adainclude/%: src/platform/%
 	cp -a $< $@
 
-$(OBJ_DIR)/adainclude/%.S: src/platform/%.S src/platform/bcopy.S src/platform/asm.h
-	$(CC) -E $< -Isrc/platform/ -o $@
+$(OBJ_DIR)/adainclude/%: src/platform/muen/%
+	cp -a $< $@
+
+$(OBJ_DIR)/adainclude/%.S: src/platform/muen/%.S src/platform/muen/bcopy.S src/platform/muen/asm.h
+	$(CC) -E $< -Isrc/platform/muen/ -o $@
 
 $(OBJ_DIR)/adainclude/%: $(TOP_DIR)/common/src/%
 	cp -a $< $@
