@@ -17,9 +17,7 @@ COMPONENTS_BUILD := \
 	sl \
 	sm \
 	time \
-	vt \
-	hello_world \
-	sdump
+	vt
 
 # components to proof
 COMPONENTS_PROOF := \
@@ -32,8 +30,7 @@ COMPONENTS_PROOF := \
 # all components inkl. Linux, overridable by user
 COMPONENTS ?= \
 	$(COMPONENTS_BUILD) \
-	linux \
-	spark_runtime
+	linux
 
 COMPS_BUILD := $(filter $(COMPONENTS_BUILD),$(COMPONENTS))
 COMPS_PROOF := $(filter $(COMPONENTS_PROOF),$(COMPONENTS))
