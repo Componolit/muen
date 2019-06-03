@@ -1,9 +1,8 @@
 
+with "../../config/shared.gpr";
 with "../libdebuglog/libdebuglog.gpr";
 
-project Sdump extends "../component_spark" is
-
-   Extra_Dirs := Component_Spark.Src_Dirs & "../../common/strings/impl";
+project Sdump extends "../spark_runtime/spark_rts_component.gpr" is
 
    for Languages use ("Ada", "Asm");
    for Source_Dirs use ("generated", "src") & Extra_Dirs;
