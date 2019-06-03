@@ -1,3 +1,4 @@
+RTS_DIR ?= $(TOP_DIR)/rts/obj
 BUILD_OPTS += --RTS=$(RTS_DIR)
 
 ALL = $(OBJ_DIR)/$(COMPONENT)
