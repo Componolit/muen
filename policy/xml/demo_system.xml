@@ -33,9 +33,9 @@
 		<include href="subject_dbgserver.xml"/>
 		<include href="subject_ps2.xml"/>
 
-                <subject name="hello_world">
+                <subject name="sdump">
                     <events/>
-                    <component ref="hello_world">
+                    <component ref="sdump">
                         <map logical="debuglog" physical="debuglog_subject9"/>
                     </component>
                 </subject>
@@ -155,7 +155,7 @@
 			<cpu id="0">
 				<minorFrame subject="ps2" ticks="5"/>
                                 <minorFrame subject="tau0" ticks="5"/>
-                                <minorFrame subject="hello_world" ticks="5"/>
+                                <minorFrame subject="sdump" ticks="5"/>
 				<minorFrame subject="nic_linux" ticks="135"/>
 			</cpu>
 			<cpu id="1">
