@@ -1,0 +1,26 @@
+
+with "../../config/shared.gpr";
+
+project Spark_Rts_Component extends "../component_spark.gpr" is
+
+   Extra_Dirs := Component_Spark.Src_Dirs & "../../common/strings/impl";
+
+   Build_Warning_Switches :=
+     ("-Wuninitialized",
+      "-Wall",
+      "-Werror");
+
+   package Builder is
+      for Global_Configuration_Pragmas use "../spark_runtime/restrictions.adc";
+   end Builder;
+
+   package Compiler is
+      for Required_Switches ("Asm") use ("-x", "assembler-with-cpp");
+      for Default_Switches ("Ada") use Shared.Spark_Compiler_Switches
+        & Preprocessor_Switches
+        & Shared.Warning_Switches
+        & Build_Warning_Switches;
+      for Local_Configuration_Pragmas use "../../config/restrictions-" & Build_Mode & ".adc";
+   end Compiler;
+
+end Spark_Rts_Component;
