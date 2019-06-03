@@ -39,6 +39,7 @@ SRC = a-except.adb \
       memcmp.S \
       memcpy.S \
       memset.S \
+      memmove.S \
       debuglog.ads \
       debuglog-client.adb \
       debuglog-sink.adb \
