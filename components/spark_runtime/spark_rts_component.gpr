@@ -16,7 +16,7 @@ project Spark_Rts_Component extends "../component_spark.gpr" is
 
    package Compiler is
       for Required_Switches ("Asm") use ("-x", "assembler-with-cpp");
-      for Default_Switches ("Ada") use Shared.Spark_Compiler_Switches
+      for Default_Switches ("Ada") use Shared.Spark_Compiler_Switches & ("-gnatyM120")
         & Preprocessor_Switches
         & Shared.Warning_Switches
         & Build_Warning_Switches;
