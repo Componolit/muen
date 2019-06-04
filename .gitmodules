@@ -12,3 +12,6 @@
 	path = components/spark_runtime/src
         url = https://github.com/Componolit/ada-runtime.git
         branch = muen
+[submodule "components/cai/src"]
+	path = components/cai/src
+	url = https://github.com/Componolit/ada-interface.git
