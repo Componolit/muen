@@ -1,5 +1,2 @@
 <component name="cai_test" profile="native">
-    <depends>
-        <library ref="libdebuglog"/>
-    </depends>
 </component>

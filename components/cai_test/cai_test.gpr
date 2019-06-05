@@ -1,5 +1,4 @@
 
-with "../libdebuglog/libdebuglog.gpr";
 project Cai_Test extends "../cai/ada_interface.gpr" is
 
    for Languages use ("Ada", "Asm");

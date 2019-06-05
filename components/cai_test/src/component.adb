@@ -1,6 +1,4 @@
 
-with Debuglog.Client;
-
 package body Component with
    SPARK_Mode
 is
@@ -9,7 +7,7 @@ is
    is
       pragma Unreferenced (Capability);
    begin
-      Debuglog.Client.Put_Line ("Construct");
+      null;
    end Construct;
 
    procedure Destruct
