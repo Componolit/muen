@@ -3,7 +3,11 @@ project Ada_Interface extends "../spark_runtime/spark_rts_component.gpr" is
 
    Ada_Interface_Source := ("../cai/src/src",
                             "../cai/src/src/platform",
-                            "../cai/src/src/platform/muen");
+                            "../cai/src/src/platform/muen",
+                            "../cai/src/src/log/",
+                            "../cai/src/src/log/muen",
+                            "../cai/src/src/log/client",
+                            "../cai/src/src/log/client/muen");
    Source := Extra_Dirs & Ada_Interface_Source;
 
 end Ada_Interface;
