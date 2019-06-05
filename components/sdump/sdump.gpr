@@ -1,11 +1,10 @@
 
-with "../../config/shared.gpr";
 with "../libdebuglog/libdebuglog.gpr";
 
-project Sdump extends "../spark_runtime/spark_rts_component.gpr" is
+project Sdump extends "../cai/ada_interface.gpr" is
 
    for Languages use ("Ada", "Asm");
-   for Source_Dirs use ("generated", "src") & Extra_Dirs;
+   for Source_Dirs use ("generated", "src") & Source;
    for Object_Dir use "obj/" & Component_Spark.Build_Mode;
    for Main use ("sdump");
 
