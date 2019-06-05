@@ -60,8 +60,10 @@ all: $(OBJ_DIR)/gnatprove/gnatprove.out
 endif
 endif
 
+AGGREGATE ?= component_spark.gpr
+
 $(OBJ_DIR)/build.gpr:
-	@echo 'aggregate project Build extends "component_spark.gpr" is' > $@
+	@echo 'aggregate project Build extends "$(AGGREGATE)" is' > $@
 	@echo '   for Project_Files use ('                              >> $@
 	@$(foreach c,$(COMPS_BUILD),echo -n '      "../$(c)/$(c).gpr"'  >> $@; \
 		if [ $(c) != $(lastword $(COMPS_BUILD)) ]; then echo ','    >> $@; \
