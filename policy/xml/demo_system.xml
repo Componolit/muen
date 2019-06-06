@@ -33,19 +33,23 @@
 		<include href="subject_dbgserver.xml"/>
 		<include href="subject_ps2.xml"/>
 
-                <!--
                 <subject name="sdump">
                     <events/>
                     <component ref="sdump">
-                        <map logical="debuglog" physical="debuglog_subject9"/>
+                        <map logical="debuglog1" physical="debuglog_subject9"/>
                     </component>
                 </subject>
-                -->
 
                 <subject name="cai_test">
                     <events/>
                     <component ref="cai_test">
-                        <map logical="debuglog" physical="debuglog_subject9"/>
+                    </component>
+                </subject>
+
+                <subject name="cai_hello_world">
+                    <events/>
+                    <component ref="cai_hello_world">
+                        <map logical="Hello_World" physical="debuglog_subject10"/>
                     </component>
                 </subject>
 
@@ -164,9 +168,10 @@
 			<cpu id="0">
 				<minorFrame subject="ps2" ticks="5"/>
                                 <minorFrame subject="tau0" ticks="5"/>
-                                    <!--<minorFrame subject="sdump" ticks="5"/>-->
+                                <minorFrame subject="sdump" ticks="5"/>
                                 <minorFrame subject="cai_test" ticks="5"/>
-				<minorFrame subject="nic_linux" ticks="135"/>
+                                <minorFrame subject="cai_hello_world" ticks="5"/>
+				<minorFrame subject="nic_linux" ticks="125"/>
 			</cpu>
 			<cpu id="1">
 				<minorFrame subject="storage_linux" ticks="100"/>

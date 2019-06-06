@@ -1,0 +1,11 @@
+
+with "../libdebuglog/libdebuglog.gpr";
+
+project Cai_Hello_World extends "../cai/ada_interface.gpr" is
+
+   for Languages use ("Ada", "Asm");
+   for Source_Dirs use ("generated", "src", "../cai/src/test/hello_world") & Source;
+   for Object_Dir use "obj/" & Component_Spark.Build_Mode;
+   for Main use ("cai_hello_world");
+
+end Cai_Hello_World;
