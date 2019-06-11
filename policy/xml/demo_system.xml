@@ -36,7 +36,7 @@
                 <subject name="hello_world">
                     <events/>
                     <component ref="hello_world">
-                        <map logical="debuglog" physical="debuglog_subject9"/>
+                        <map logical="debuglog1" physical="debuglog_subject9"/>
                     </component>
                 </subject>
 
