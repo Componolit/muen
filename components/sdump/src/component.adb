@@ -31,6 +31,9 @@ is
       if CILC.Initialized (Log) then
          CILC.Info (Log, "Sdump");
          CILC.Info (Log, "Name: " & String (Name_Obj.Data (1 .. Integer (Name_Obj.Length))));
+         CILC.Info (Log, "Tick rate: " & CIL.Image (CIL.Unsigned (Musinfo.Instance.TSC_Khz)));
+         CILC.Info (Log, "Schedule start: " & CIL.Image (CIL.Unsigned (Musinfo.Instance.TSC_Schedule_Start)));
+         CILC.Info (Log, "Schedule end: " & CIL.Image (CIL.Unsigned (Musinfo.Instance.TSC_Schedule_End)));
          if Memregion = Musinfo.Null_Memregion then
             CILC.Info (Log, "Memregion "
                             & String (Debug_Name.Data (1 .. Integer (Debug_Name.Length)))
@@ -66,6 +69,9 @@ is
             Musinfo.Instance.Next (Resit);
          end loop;
          CILC.Info (Log, "Finished sdump");
+         Main.Vacate (Cap, Main.Success);
+      else
+         Main.Vacate (Cap, Main.Failure);
       end if;
    end Construct;
 

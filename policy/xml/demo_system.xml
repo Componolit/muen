@@ -13,7 +13,10 @@
 	<include href="kernel_diagnostics.xml"/>
 
 	<memory>
-		<include href="common_memory.xml"/>
+            <include href="common_memory.xml"/>
+            <memory name="testfile" size="16#0000_1000#" caching="WB">
+                <file filename="cai_rom_test_file" offset="none"/>
+            </memory>
 	</memory>
 
 	<events>
@@ -50,6 +53,23 @@
                     <events/>
                     <component ref="cai_hello_world">
                         <map logical="Hello_World" physical="debuglog_subject10"/>
+                    </component>
+                </subject>
+
+                <subject name="cai_timer">
+                    <events/>
+                    <component ref="cai_timer">
+                        <map logical="Timer" physical="debuglog_subject11"/>
+                    </component>
+                </subject>
+
+                <subject name="cai_rom">
+                    <memory>
+                        <memory logical="config" physical="testfile" virtualAddress="16#9000_0000#" writable="false" executable="false"/>
+                    </memory>
+                    <events/>
+                    <component ref="cai_rom">
+                        <map logical="Rom" physical="debuglog_subject12"/>
                     </component>
                 </subject>
 
@@ -168,9 +188,11 @@
 			<cpu id="0">
 				<minorFrame subject="ps2" ticks="5"/>
                                 <minorFrame subject="tau0" ticks="5"/>
-                                <minorFrame subject="sdump" ticks="5"/>
-                                <minorFrame subject="cai_test" ticks="5"/>
-                                <minorFrame subject="cai_hello_world" ticks="5"/>
+                                <minorFrame subject="sdump" ticks="7"/>
+                                <minorFrame subject="cai_test" ticks="2"/>
+                                <minorFrame subject="cai_hello_world" ticks="2"/>
+                                <minorFrame subject="cai_timer" ticks="2"/>
+                                <minorFrame subject="cai_rom" ticks="2"/>
 				<minorFrame subject="nic_linux" ticks="125"/>
 			</cpu>
 			<cpu id="1">
