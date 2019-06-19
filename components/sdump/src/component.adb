@@ -4,6 +4,8 @@ with Musinfo.Instance;
 with Musinfo.Utils;
 with Componolit.Interfaces.Log;
 with Componolit.Interfaces.Log.Client;
+with Componolit.Interfaces.Block;
+with Componolit.Interfaces.Block.Client;
 
 package body Component with
    SPARK_Mode
@@ -11,8 +13,26 @@ is
 
    package CIL renames Componolit.Interfaces.Log;
    package CILC renames Componolit.Interfaces.Log.Client;
+   package CIB is new Componolit.Interfaces.Block (Character, Positive, String);
+
+   procedure Write (C : CIB.Client_Instance;
+                    B : CIB.Size;
+                    S : CIB.Id;
+                    L : CIB.Count;
+                    D : out String);
+
+   procedure Read (C : CIB.Client_Instance;
+                   B : CIB.Size;
+                   S : CIB.Id;
+                   L : CIB.Count;
+                   D : String);
+
+   procedure Event;
+
+   package CIBC is new CIB.Client (Event, Read, Write);
 
    Log : CIL.Client_Session := CILC.Create;
+   Block : CIB.Client_Session := CIBC.Create;
 
    procedure Construct (Cap : Componolit.Interfaces.Types.Capability)
    is
@@ -68,6 +88,16 @@ is
             end case;
             Musinfo.Instance.Next (Resit);
          end loop;
+         CILC.Info (Log, "Running block test...");
+         CILC.Info (Log, "Initializing...");
+         CIBC.Initialize (Block, Cap, "blockdev1");
+         if CIBC.Initialized (Block) then
+            CILC.Info (Log, "Initialized.");
+            CILC.Info (Log, "Block size: " & CIL.Image (Long_Integer (CIBC.Block_Size (Block))));
+            CILC.Info (Log, "Block count: " & CIL.Image (Long_Integer (CIBC.Block_Count (Block))));
+         else
+            CILC.Warning (Log, "Initialization failed.");
+         end if;
          CILC.Info (Log, "Finished sdump");
          Main.Vacate (Cap, Main.Success);
       else
@@ -80,5 +110,31 @@ is
    begin
       null;
    end Destruct;
+
+   procedure Write (C : CIB.Client_Instance;
+                    B : CIB.Size;
+                    S : CIB.Id;
+                    L : CIB.Count;
+                    D : out String)
+   is
+   begin
+      null;
+   end Write;
+
+   procedure Read (C : CIB.Client_Instance;
+                   B : CIB.Size;
+                   S : CIB.Id;
+                   L : CIB.Count;
+                   D : String)
+   is
+   begin
+      null;
+   end Read;
+
+   procedure Event
+   is
+   begin
+      null;
+   end Event;
 
 end Component;
