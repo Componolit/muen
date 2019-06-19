@@ -13,11 +13,13 @@
 	<channel name="debuglog_subject3" size="$logchannel_size"/>
 	<channel name="debuglog_subject4" size="$logchannel_size"/>
 	<channel name="debuglog_subject5" size="$logchannel_size"/>
-	<channel name="debuglog_subject6" size="$logchannel_size"/>
+        <channel name="debuglog_subject6" size="$logchannel_size"/>
+        <!--
         <channel name="debuglog_subject9" size="$logchannel_size"/>
         <channel name="debuglog_subject10" size="$logchannel_size"/>
         <channel name="debuglog_subject11" size="$logchannel_size"/>
         <channel name="debuglog_subject12" size="$logchannel_size"/>
+        -->
 
 	<if variable="pciconf_emulation_enabled" value="true">
 		<channel name="debuglog_subject7" size="$logchannel_size"/>
