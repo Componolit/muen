@@ -1453,7 +1453,7 @@ is
                     (Policy      => Data,
                      Name        => Name & "|bin",
                      Address     => "",
-                     Size        => "16#7000#",
+                     Size        => "16#000e_0000#",
                      Caching     => "WB",
                      Alignment   => "16#1000#",
                      Memory_Type => "subject_binary",
