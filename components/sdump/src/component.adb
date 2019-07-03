@@ -70,8 +70,11 @@ is
                when Musinfo.Res_None =>
                   CILC.Info (Log, "Found no resource");
                when Musinfo.Res_Memory =>
-                  CILC.Info (Log, "Found memory resource: "
+                  CILC.Info (Log, "Found memory "
+                                  & (if Resource.Mem_Data.Flags.Channel then "channel" else "resource")
+                                  & ": "
                                   & String (Resource.Name.Data (1 .. Integer (Resource.Name.Length)))
+                                  & (if Resource.Mem_Data.Flags.Writable then " (rw) " else " (ro) ")
                                   & " at "
                                   & CIL.Image (CIL.Unsigned (Resource.Mem_Data.Address))
                                   & " with size "
