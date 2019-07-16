@@ -11,7 +11,6 @@ SRC = a-except.adb \
       interfac.ads \
       componolit.ads \
       componolit-runtime.ads \
-      componolit-runtime-secondary_stack.adb \
       componolit-runtime-strings.adb \
       componolit-runtime-debug.adb \
       componolit-runtime-platform.adb \
