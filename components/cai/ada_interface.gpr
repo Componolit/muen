@@ -4,6 +4,7 @@ with "../libmuchannel/libmuchannel";
 project Ada_Interface extends "../spark_runtime/spark_rts_component.gpr" is
 
    Ada_Interface_Source := ("../cai/src/src",
+                            "../cai/src/src/common",
                             "../cai/src/src/platform",
                             "../cai/src/src/platform/muen",
                             "../cai/src/src/log/",
@@ -21,7 +22,9 @@ project Ada_Interface extends "../spark_runtime/spark_rts_component.gpr" is
                             "../cai/src/src/block",
                             "../cai/src/src/block/muen",
                             "../cai/src/src/block/client",
-                            "../cai/src/src/block/client/muen");
+                            "../cai/src/src/block/client/muen",
+                            "../cai/src/src/block/server",
+                            "../cai/src/src/block/server/muen");
    Source := Extra_Dirs & Ada_Interface_Source;
 
 end Ada_Interface;

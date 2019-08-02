@@ -6,6 +6,7 @@ with Componolit.Interfaces.Log;
 with Componolit.Interfaces.Log.Client;
 with Componolit.Interfaces.Block;
 with Componolit.Interfaces.Block.Client;
+with Componolit.Interfaces.Strings;
 
 package body Component with
    SPARK_Mode
@@ -13,23 +14,20 @@ is
 
    package CIL renames Componolit.Interfaces.Log;
    package CILC renames Componolit.Interfaces.Log.Client;
+   package CIS renames Componolit.Interfaces.Strings;
    package CIB is new Componolit.Interfaces.Block (Character, Positive, String);
 
    procedure Write (C : CIB.Client_Instance;
-                    B : CIB.Size;
-                    S : CIB.Id;
-                    L : CIB.Count;
+                    I : Integer;
                     D : out String);
 
    procedure Read (C : CIB.Client_Instance;
-                   B : CIB.Size;
-                   S : CIB.Id;
-                   L : CIB.Count;
+                   I : Integer;
                    D : String);
 
    procedure Event;
 
-   package CIBC is new CIB.Client (Event, Read, Write);
+   package CIBC is new CIB.Client (Integer, Event, Read, Write);
 
    Log : CIL.Client_Session := CILC.Create;
    Block : CIB.Client_Session := CIBC.Create;
@@ -51,9 +49,9 @@ is
       if CILC.Initialized (Log) then
          CILC.Info (Log, "Sdump");
          CILC.Info (Log, "Name: " & String (Name_Obj.Data (1 .. Integer (Name_Obj.Length))));
-         CILC.Info (Log, "Tick rate: " & CIL.Image (CIL.Unsigned (Musinfo.Instance.TSC_Khz)));
-         CILC.Info (Log, "Schedule start: " & CIL.Image (CIL.Unsigned (Musinfo.Instance.TSC_Schedule_Start)));
-         CILC.Info (Log, "Schedule end: " & CIL.Image (CIL.Unsigned (Musinfo.Instance.TSC_Schedule_End)));
+         CILC.Info (Log, "Tick rate: " & CIS.Image (Musinfo.Instance.TSC_Khz));
+         CILC.Info (Log, "Schedule start: " & CIS.Image (Musinfo.Instance.TSC_Schedule_Start));
+         CILC.Info (Log, "Schedule end: " & CIS.Image (Musinfo.Instance.TSC_Schedule_End));
          if Memregion = Musinfo.Null_Memregion then
             CILC.Info (Log, "Memregion "
                             & String (Debug_Name.Data (1 .. Integer (Debug_Name.Length)))
@@ -62,7 +60,7 @@ is
             CILC.Info (Log, "Memregion "
                             & String (Debug_Name.Data (1 .. Integer (Debug_Name.Length)))
                             & " found at "
-                            & CIL.Image (CIL.Unsigned (Memregion.Address)));
+                            & CIS.Image (Memregion.Address));
          end if;
          while Musinfo.Instance.Has_Element (Resit) loop
             Resource := Musinfo.Instance.Element (Resit);
@@ -76,9 +74,9 @@ is
                                   & String (Resource.Name.Data (1 .. Integer (Resource.Name.Length)))
                                   & (if Resource.Mem_Data.Flags.Writable then " (rw) " else " (ro) ")
                                   & " at "
-                                  & CIL.Image (CIL.Unsigned (Resource.Mem_Data.Address))
+                                  & CIS.Image (Resource.Mem_Data.Address)
                                   & " with size "
-                                  & CIL.Image (CIL.Unsigned (Resource.Mem_Data.Size)));
+                                  & CIS.Image (Resource.Mem_Data.Size));
                when Musinfo.Res_Event =>
                   CILC.Info (Log, "Found event resource: "
                                   & String (Resource.Name.Data (1 .. Integer (Resource.Name.Length))));
@@ -96,8 +94,8 @@ is
          CIBC.Initialize (Block, Cap, "blockdev1");
          if CIBC.Initialized (Block) then
             CILC.Info (Log, "Initialized.");
-            CILC.Info (Log, "Block size: " & CIL.Image (Long_Integer (CIBC.Block_Size (Block))));
-            CILC.Info (Log, "Block count: " & CIL.Image (Long_Integer (CIBC.Block_Count (Block))));
+            CILC.Info (Log, "Block size: " & CIS.Image (Long_Integer (CIBC.Block_Size (Block))));
+            CILC.Info (Log, "Block count: " & CIS.Image (Long_Integer (CIBC.Block_Count (Block))));
          else
             CILC.Warning (Log, "Initialization failed.");
          end if;
@@ -115,9 +113,7 @@ is
    end Destruct;
 
    procedure Write (C : CIB.Client_Instance;
-                    B : CIB.Size;
-                    S : CIB.Id;
-                    L : CIB.Count;
+                    I : Integer;
                     D : out String)
    is
    begin
@@ -125,9 +121,7 @@ is
    end Write;
 
    procedure Read (C : CIB.Client_Instance;
-                   B : CIB.Size;
-                   S : CIB.Id;
-                   L : CIB.Count;
+                   I : Integer;
                    D : String)
    is
    begin
