@@ -15,7 +15,7 @@ is
    package CIL renames Componolit.Interfaces.Log;
    package CILC renames Componolit.Interfaces.Log.Client;
    package CIS renames Componolit.Interfaces.Strings;
-   package CIB is new Componolit.Interfaces.Block (Character, Positive, String);
+   package CIB is new Componolit.Interfaces.Block (Character, Positive, String, Integer);
 
    procedure Write (C : CIB.Client_Instance;
                     I : Integer;
@@ -27,10 +27,10 @@ is
 
    procedure Event;
 
-   package CIBC is new CIB.Client (Integer, Event, Read, Write);
+   package CIBC is new CIB.Client (Event, Read, Write);
 
    Log : CIL.Client_Session := CILC.Create;
-   Block : CIB.Client_Session := CIBC.Create;
+   Block : CIB.Client_Session := CIB.Create;
 
    procedure Construct (Cap : Componolit.Interfaces.Types.Capability)
    is
@@ -92,10 +92,10 @@ is
          CILC.Info (Log, "Running block test...");
          CILC.Info (Log, "Initializing...");
          CIBC.Initialize (Block, Cap, "blockdev1");
-         if CIBC.Initialized (Block) then
+         if CIB.Initialized (Block) then
             CILC.Info (Log, "Initialized.");
-            CILC.Info (Log, "Block size: " & CIS.Image (Long_Integer (CIBC.Block_Size (Block))));
-            CILC.Info (Log, "Block count: " & CIS.Image (Long_Integer (CIBC.Block_Count (Block))));
+            CILC.Info (Log, "Block size: " & CIS.Image (Long_Integer (CIB.Block_Size (Block))));
+            CILC.Info (Log, "Block count: " & CIS.Image (Long_Integer (CIB.Block_Count (Block))));
          else
             CILC.Warning (Log, "Initialization failed.");
          end if;
