@@ -29,7 +29,7 @@ is
 
    package CIBC is new CIB.Client (Event, Read, Write);
 
-   Log : CIL.Client_Session := CILC.Create;
+   Log : CIL.Client_Session := CIL.Create;
    Block : CIB.Client_Session := CIB.Create;
 
    procedure Construct (Cap : Componolit.Interfaces.Types.Capability)
@@ -46,7 +46,7 @@ is
       Resource : Musinfo.Resource_Type;
    begin
       CILC.Initialize (Log, Cap, "debuglog1");
-      if CILC.Initialized (Log) then
+      if CIL.Initialized (Log) then
          CILC.Info (Log, "Sdump");
          CILC.Info (Log, "Name: " & String (Name_Obj.Data (1 .. Integer (Name_Obj.Length))));
          CILC.Info (Log, "Tick rate: " & CIS.Image (Musinfo.Instance.TSC_Khz));
