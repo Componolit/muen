@@ -15,22 +15,22 @@ is
    package CIL renames Componolit.Interfaces.Log;
    package CILC renames Componolit.Interfaces.Log.Client;
    package CIS renames Componolit.Interfaces.Strings;
-   package CIB is new Componolit.Interfaces.Block (Character, Positive, String, Integer);
+   package CIB is new Componolit.Interfaces.Block (Character, Positive, String, Integer, Integer);
 
-   procedure Write (C : CIB.Client_Instance;
-                    I : Integer;
-                    D : out String);
+   procedure Write (C : in out CIB.Client_Session;
+                    I :        Integer;
+                    D :    out String);
 
-   procedure Read (C : CIB.Client_Instance;
-                   I : Integer;
-                   D : String);
+   procedure Read (C : in out CIB.Client_Session;
+                   I :        Integer;
+                   D :        String);
 
    procedure Event;
 
    package CIBC is new CIB.Client (Event, Read, Write);
 
    Log : CIL.Client_Session := CIL.Create;
-   Block : CIB.Client_Session := CIB.Create;
+   Block : CIB.Client_Session;
 
    procedure Construct (Cap : Componolit.Interfaces.Types.Capability)
    is
@@ -91,7 +91,7 @@ is
          end loop;
          CILC.Info (Log, "Running block test...");
          CILC.Info (Log, "Initializing...");
-         CIBC.Initialize (Block, Cap, "blockdev1");
+         CIBC.Initialize (Block, Cap, "blockdev1", 42);
          if CIB.Initialized (Block) then
             CILC.Info (Log, "Initialized.");
             CILC.Info (Log, "Block size: " & CIS.Image (Long_Integer (CIB.Block_Size (Block))));
@@ -112,17 +112,17 @@ is
       null;
    end Destruct;
 
-   procedure Write (C : CIB.Client_Instance;
-                    I : Integer;
-                    D : out String)
+   procedure Write (C : in out CIB.Client_Session;
+                    I :        Integer;
+                    D :    out String)
    is
    begin
       null;
    end Write;
 
-   procedure Read (C : CIB.Client_Instance;
-                   I : Integer;
-                   D : String)
+   procedure Read (C : in out CIB.Client_Session;
+                   I :        Integer;
+                   D :        String)
    is
    begin
       null;
