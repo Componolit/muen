@@ -1,8 +1,8 @@
 
-with Componolit.Interfaces.Main;
+with Componolit.Gneiss.Main;
 
 procedure Cai_Test
 is
 begin
-   Componolit.Interfaces.Main.Run;
+   Componolit.Gneiss.Main.Run;
 end Cai_Test;

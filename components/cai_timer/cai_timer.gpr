@@ -1,10 +1,10 @@
 
 with "../libdebuglog/libdebuglog.gpr";
 
-project Cai_Timer extends "../cai/ada_interface.gpr" is
+project Cai_Timer extends "../gneiss/gneiss.gpr" is
 
    for Languages use ("Ada", "Asm");
-   for Source_Dirs use ("generated", "src", "../cai/src/test/timer") & Source;
+   for Source_Dirs use ("generated", "src", "../gneiss/src/test/timer") & Source;
    for Object_Dir use "obj/" & Component_Spark.Build_Mode;
    for Main use ("cai_timer");
 

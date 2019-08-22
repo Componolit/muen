@@ -1,5 +1,5 @@
 
-project Cai_Test extends "../cai/ada_interface.gpr" is
+project Cai_Test extends "../gneiss/gneiss.gpr" is
 
    for Languages use ("Ada", "Asm");
    for Source_Dirs use ("src", "generated") & Source;

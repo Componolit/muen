@@ -2,20 +2,20 @@
 with Musinfo;
 with Musinfo.Instance;
 with Musinfo.Utils;
-with Componolit.Interfaces.Log;
-with Componolit.Interfaces.Log.Client;
-with Componolit.Interfaces.Block;
-with Componolit.Interfaces.Block.Client;
-with Componolit.Interfaces.Strings;
+with Componolit.Gneiss.Log;
+with Componolit.Gneiss.Log.Client;
+with Componolit.Gneiss.Block;
+with Componolit.Gneiss.Block.Client;
+with Componolit.Gneiss.Strings;
 
 package body Component with
    SPARK_Mode
 is
 
-   package CIL renames Componolit.Interfaces.Log;
-   package CILC renames Componolit.Interfaces.Log.Client;
-   package CIS renames Componolit.Interfaces.Strings;
-   package CIB is new Componolit.Interfaces.Block (Character, Positive, String, Integer, Integer);
+   package CIL renames Componolit.Gneiss.Log;
+   package CILC renames Componolit.Gneiss.Log.Client;
+   package CIS renames Componolit.Gneiss.Strings;
+   package CIB is new Componolit.Gneiss.Block (Character, Positive, String, Integer, Integer);
 
    procedure Write (C : in out CIB.Client_Session;
                     I :        Integer;
@@ -32,7 +32,7 @@ is
    Log   : CIL.Client_Session;
    Block : CIB.Client_Session;
 
-   procedure Construct (Cap : Componolit.Interfaces.Types.Capability)
+   procedure Construct (Cap : Componolit.Gneiss.Types.Capability)
    is
       use type Musinfo.Memregion_Type;
       Name_Obj : constant Musinfo.Name_Type := Musinfo.Instance.Subject_Name;

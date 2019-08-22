@@ -3,7 +3,7 @@ package body Component with
    SPARK_Mode
 is
 
-   procedure Construct (Capability : Componolit.Interfaces.Types.Capability)
+   procedure Construct (Capability : Componolit.Gneiss.Types.Capability)
    is
       pragma Unreferenced (Capability);
    begin

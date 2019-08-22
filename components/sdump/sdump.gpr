@@ -1,7 +1,7 @@
 
 with "../libdebuglog/libdebuglog.gpr";
 
-project Sdump extends "../cai/ada_interface.gpr" is
+project Sdump extends "../gneiss/gneiss.gpr" is
 
    for Languages use ("Ada", "Asm");
    for Source_Dirs use ("generated", "src") & Source;
