@@ -29,7 +29,7 @@ is
 
    package CIBC is new CIB.Client (Event, Read, Write);
 
-   Log : CIL.Client_Session := CIL.Create;
+   Log   : CIL.Client_Session;
    Block : CIB.Client_Session;
 
    procedure Construct (Cap : Componolit.Interfaces.Types.Capability)
