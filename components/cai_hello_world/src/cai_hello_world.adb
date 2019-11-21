@@ -1,9 +1,9 @@
 
-with Componolit.Gneiss.Main;
+with Gneiss.Main;
 
 procedure Cai_Hello_World with
    SPARK_Mode
 is
 begin
-   Componolit.Gneiss.Main.Run;
+   Gneiss.Main.Run;
 end Cai_Hello_World;

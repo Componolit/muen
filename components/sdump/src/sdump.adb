@@ -1,9 +1,9 @@
 
-with Componolit.Gneiss.Main;
+with Gneiss.Main;
 
 procedure Sdump with
    SPARK_Mode
 is
 begin
-   Componolit.Gneiss.Main.Run;
+   Gneiss.Main.Run;
 end Sdump;
