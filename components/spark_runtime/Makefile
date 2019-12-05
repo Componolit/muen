@@ -6,6 +6,8 @@ DUMMY := $(shell mkdir -p $(OBJ_DIR) $(OBJ_DIR)/adainclude $(OBJ_DIR)/adalib)
 SRC = a-except.adb \
       a-unccon.ads \
       ada.ads \
+      a-tags.ads \
+      a-tags.adb \
       i-c.adb \
       i-cexten.ads \
       interfac.ads \
