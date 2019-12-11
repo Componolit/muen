@@ -32,7 +32,7 @@ is
    Log   : CIL.Client_Session;
    Block : CIB.Client_Session;
 
-   procedure Construct (Cap : Gneiss.Types.Capability)
+   procedure Construct (Cap : Gneiss.Capability)
    is
       use type Musinfo.Memregion_Type;
       Name_Obj : constant Musinfo.Name_Type := Musinfo.Instance.Subject_Name;
